@@ -1,4 +1,4 @@
-#solution 1
+                                            #solution 1 with extraa space
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
@@ -31,6 +31,33 @@ public:
                 ans[i] = prefix[i-1];
             }
             else ans[i] = prefix[i-1] * suffix[i+1];
+        }
+
+        return ans;
+    }
+};
+
+                            #solution 2 without extraa space
+
+
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> ans(nums.size(), 1);
+        int num = 1;
+
+        for(int i = 0; i < nums.size(); i++)
+        {
+            ans[i] = ans[i] * num;
+            num = num * nums[i];
+        }
+
+        num = 1;
+
+        for(int i = nums.size() - 1; i >= 0; i--)
+        {
+            ans[i] = ans[i] * num;
+            num = num * nums[i];
         }
 
         return ans;
